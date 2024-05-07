@@ -1,0 +1,3 @@
+sonar.projectKey=python-docker
+sonar.projectName=python-docker
+sonar.sources=src
