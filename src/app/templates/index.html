@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 600px; margin: 0 auto; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; }
+        input[type="text"] { width: 100%; padding: 8px; }
+        button { padding: 10px 15px; background-color: #007BFF; color: #fff; border: none; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        .result { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sentiment Analysis</h1>
+        <form method="POST">
+            <div class="form-group">
+                <label for="text">Enter Text:</label>
+                <input type="text" id="text" name="text">
+            </div>
+            <button type="submit">Analyze</button>
+        </form>
+        {% if prediction %}
+        <div class="result">
+            <h2>Prediction: {{ prediction }}</h2>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
