@@ -18,12 +18,11 @@ RUN apt-get update && apt-get install -y \
 RUN pip install --no-cache-dir --upgrade pip setuptools wheel
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiar el código de la aplicación y el modelo
+# Copiar el código de la aplicación y los archivos de modelo
 COPY ./src/app /code/app
-COPY ./src/sentiment_model.pkl /code/app
 
-# Exponer el puerto 8080
-EXPOSE 8080
+# Exponer el puerto 80
+EXPOSE 80
 
 # Comando para ejecutar la aplicación
-CMD ["uvicorn", "app.main:app", "--reload", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["python", "/code/app/main.py"]
