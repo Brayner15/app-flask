@@ -25,4 +25,4 @@ COPY ./src/app /code/app
 EXPOSE 80
 
 # Comando para ejecutar la aplicación
-CMD ["python", "/code/app/main.py"]
+CMD ["python", "/code/app/app.py"]
