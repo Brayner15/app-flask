@@ -4,8 +4,6 @@ import logging
 
 app = Flask(__name__)
 
-# Configurar el logging para que muestre mensajes de depuración
-logging.basicConfig(level=logging.DEBUG)
 
 # Cargar el modelo y el vectorizador de sentimiento
 try:
@@ -20,21 +18,21 @@ except Exception as e:
 def index():
     if request.method == "POST":
         text = request.form["text"]
-        prueba = [text]  # Convertir el texto de entrada en una lista de un solo elemento
+        prueba = [text]  
         try:
-            # Transformar el texto usando el vectorizador
+
             text_transformed = vectorizer.transform(prueba)
-            # Realizar la predicción
+
             P = model.predict(text_transformed)
-            # Obtener las clases del modelo
+
             clases = model.classes_
-            # Asignar la etiqueta adecuada
+
             if clases[P[0]] == 0:
-                prediction_label = "Negativo"
+                prediction_label = "Negative"
             elif clases[P[0]] == 2:
-                prediction_label = "Neutro"
+                prediction_label = "Neutral"
             else:
-                prediction_label = "Positivo"
+                prediction_label = "Positive"
             
             return render_template("index.html", text=text, prediction=prediction_label)
         except Exception as e:
